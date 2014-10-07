@@ -1,0 +1,16 @@
+[
+{
+  "modid": "RCServMod",
+  "name": "RussianCraft Server Mod",
+  "description": "Большой мод, составленный из модов IC2, BC, UE, GC, их аддонов и из своих модов, в том числе из тех, что не были реализованы.",
+  "version": "1.0",
+  "mcversion": "1.7.2",
+  "url": "http://vk.com/russiancraft_official",
+  "updateUrl": "",
+  "authorList": ["VovaMaster99", "Alblaka(IC2)", "IC2 dev team", "SpaceToad(BC)", "Calclavia(UE)", "Micdoodle8(GC)"],
+  "credits": "IC2 team, Alklaka for Industrial Craft2, SpaceToad for BuildCraft, Calclavia for Universal Electricity and Micdoodle8 for Galacticraft",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,0 +1,12 @@
+﻿itemGroup.buildingBlocks=Строительные блоки
+itenGroup.material=Материалы
+
+tile.airCobblestone.name=Воздушный Булыжник
+tile.airOre.name=Руда Воздуха
+tile.matterOre.name=Руда Материи
+tile.polymerOre.name=Полимерная Руда
+tile.palladiumOre.name=Паладиевая Руда
+
+item.rawMatter.name=Сырая Материя
+item.rawPolymer.name=Сырой Полимер
+item.palladiumChunk025.name=Кусочек Палладия(0,25)

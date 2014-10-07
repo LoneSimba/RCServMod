@@ -1,0 +1,12 @@
+itemGroup.buildingBlocks=Building blocks
+itemGroup.materials=Materials
+
+tile.airCobblestone.name=Air Cobblestone
+tile.airOre.name=Air Ore
+tile.matterOre.name=Matter Ore
+tile.polymerOre.name=Polymer Ore
+tile.palladiumOre.name=Palladium Ore
+
+item.rawMatter.name=Raw Matter
+item.rawPolymer.name=Raw Polymer
+item.palladiumChunk025.name=Palladium Chunk(0,25)
