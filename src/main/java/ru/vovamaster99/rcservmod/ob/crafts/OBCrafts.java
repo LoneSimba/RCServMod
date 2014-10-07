@@ -1,9 +1,12 @@
 package ru.vovamaster99.rcservmod.ob.crafts;
 
 
-public class OBCrafts 
+import net.minecraft.item.ItemStack;
+import ru.vovamaster99.rcservmod.ob.items.OBItems;
+
+public class OBCrafts
 {
-    public static void crafts()
+    public void crafts()
     {
     }
 }

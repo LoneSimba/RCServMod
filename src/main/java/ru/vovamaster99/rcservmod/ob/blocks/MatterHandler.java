@@ -23,6 +23,7 @@ public class MatterHandler extends BlockContainer {
 
     @SideOnly(Side.CLIENT)
     private IIcon blockIcon_top;
+    private IIcon blockIcon_top_work;
     private IIcon blockIcon_front;
     private IIcon blockIcon_side;
     private IIcon blockIcon_back;
@@ -40,7 +41,8 @@ public class MatterHandler extends BlockContainer {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister iconReg) {
-        blockIcon_top = iconReg.registerIcon(ModBase.MODID + ":matterHandler_top");
+        TileEntityMatterHandler matterHandler = new TileEntityMatterHandler();
+        blockIcon_top = iconReg.registerIcon(matterHandler.isWorking() ? ModBase.MODID + ":matterHandler_top_work" : ModBase.MODID + ":matterHandler_top");
         blockIcon_front = iconReg.registerIcon(ModBase.MODID + ":matterHandler_front");
         blockIcon_side = iconReg.registerIcon(ModBase.MODID + ":matterHandler_side");
         blockIcon_back = iconReg.registerIcon(ModBase.MODID + ":matterHandler_back");
@@ -78,6 +80,28 @@ public class MatterHandler extends BlockContainer {
         if (!world.isRemote)
             player.openGui(ModBase.MODID, 1 , world, x, y, z);
         return true;
+    }
+
+    public static void updateHandlerBlockState(boolean flag, World world, int par3, int par4, int par5) {
+        int l = world.getBlockMetadata(par3, par4, par5);
+        TileEntity tileEntity = world.getTileEntity(par3, par4, par5);
+        flag = true;
+
+        if (flag) {
+            world.setBlock(par3, par4, par5, OBBlocks.matterHandler_work);
+        }
+        else {
+            world.setBlock(par3, par4, par5, OBBlocks.matterHandler);
+        }
+
+        flag = false;
+        world.setBlockMetadataWithNotify(par3, par4, par5, 1, 2);
+
+        if (tileEntity != null) {
+            tileEntity.validate();;
+            world.setTileEntity(par3, par4, par5, tileEntity);
+        }
+
     }
 
     @Override

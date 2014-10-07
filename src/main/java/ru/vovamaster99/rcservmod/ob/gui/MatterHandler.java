@@ -14,7 +14,8 @@ public class MatterHandler extends Container{
     private EntityPlayer player;
     public MatterHandler(EntityPlayer p, TileEntityMatterHandler te){
         tile = te; player = p;
-        addSlotToContainer(new SlotROM(tile, 0, 26, 35));
+        addSlotToContainer(new Slot(tile, 0, 36, 35));
+        addSlotToContainer(new SlotMH(p, tile, 1, 116, 35));
         for(int i = 0; i < 9; i++)
             addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 142));
         for(int i = 0; i < 3; i++)

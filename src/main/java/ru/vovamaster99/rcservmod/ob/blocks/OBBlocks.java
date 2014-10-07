@@ -18,6 +18,7 @@ public class OBBlocks
 	public static Block matterOre;
 	public static Block polymerOre;
 	public static Block matterHandler;
+    public static Block matterHandler_work;
 	
 	public static void blocks()
 	{
@@ -30,7 +31,8 @@ public class OBBlocks
 		matterOre = new MatterOre().setBlockName("matterOre").setHardness(2.0F).setResistance(6.0F).setStepSound(Block.soundTypeStone).setCreativeTab(ModBase.buildingBlocks).setBlockTextureName(ModBase.MODID + ":" + "matterOre");
 		polymerOre = new PolymerOre().setBlockName("polymerOre").setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundTypeStone).setCreativeTab(ModBase.buildingBlocks).setBlockTextureName(ModBase.MODID + ":" + "polymerOre");
 		matterHandler = new MatterHandler().setBlockName("matterHandler").setCreativeTab(ModBase.buildingBlocks).setStepSound(Block.soundTypeMetal);
-		
+		matterHandler_work = new MatterHandler().setBlockName("matterHandler_work").setStepSound(Block.soundTypeMetal);
+
 		GameRegistry.registerBlock(airCobblestone, "airCobblestone");
 	    GameRegistry.registerBlock(airGlowstone, "airGlowstone");
 	    GameRegistry.registerBlock(airStone, "airStone");
@@ -38,5 +40,6 @@ public class OBBlocks
 		GameRegistry.registerBlock(matterOre, "matterOre");
 		GameRegistry.registerBlock(polymerOre, "polymerOre");
 		GameRegistry.registerBlock(matterHandler, "matterHandler");
+        GameRegistry.registerBlock(matterHandler_work, "matterHandler_work");
 	}
 }
