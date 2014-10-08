@@ -23,6 +23,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ru.vovamaster99.rcservmod.ob.blocks.MatterHandler;
 import ru.vovamaster99.rcservmod.ob.crafts.MHRecipes;
+import ru.vovamaster99.rcservmod.ob.items.OBItems;
 
 public class TileEntityMatterHandler extends TileEntity implements IInventory {
 
@@ -171,57 +172,28 @@ public class TileEntityMatterHandler extends TileEntity implements IInventory {
     public boolean isWorking() {
         return handlingTime > 0;
     }
-
+//++
     @Override
     public void updateEntity() {
-        boolean flag = handlingTime > 0;
-        boolean flag1 = false;
+        if (!getWorldObj().isRemote) {
+            ItemStack itemStack = getStackInSlot(0);
 
-        if (handlingTime > 0) {
-
-            --handlingTime;
-        }
-
-        if (!worldObj.isRemote) {
-
-            if (handlingTime == 0 && canHandle()) {
-
-                if(handlingTime > 0) {
-                    flag1 = true;
-
-                    if (handlerItemStacks[1] != null) {
-
-                        --handlerItemStacks[1].stackSize;
-
-                        if (handlerItemStacks[1].stackSize == 0) {
-
-                            handlerItemStacks[1] = handlerItemStacks[1].getItem().getContainerItem(handlerItemStacks[1]);
-                        }
-                    }
-                }
-            }
-
-            if (isWorking() && canHandle()) {
-                ++handlingTime;
-
-                if (handlingTime == 200) {
+            if (itemStack != null) {
+                for(handlingTime = 0; handlingTime < 20; ++handlingTime);
+                if (handlingTime == 20) {
                     handlingTime = 0;
-                    handleItem();
-                    flag1 =true;
+                    decrStackSize(0, 1);
+                    if (getStackInSlot(1) != null) {
+                        setInventorySlotContents(1, new ItemStack(OBItems.matter, ++getStackInSlot(1).stackSize));
+                    }
+                    else {
+                        setInventorySlotContents(1, new ItemStack(OBItems.matter));
+                        markDirty();
+                    }
+                } else {
+                    handlingTime = 0;
                 }
             }
-            else {
-                handlingTime = 0;
-            }
-
-            if (flag != handlerWorkTime > 0) {
-                flag1 = true;
-                MatterHandler.updateHandlerBlockState(handlerWorkTime > 0, worldObj, xCoord, yCoord, zCoord);
-            }
-        }
-
-        if (flag1) {
-            markDirty();
         }
     }
 
